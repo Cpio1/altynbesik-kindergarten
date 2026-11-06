@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+@theme {
+  --color-milk: #fff9ed;
+  --color-gold: #e9b949;
+  --color-butter: #fff0bd;
+  --color-sage: #86a77b;
+  --color-mint: #eaf3df;
+  --color-ink: #26352c;
+
+  --font-display: var(--font-lora), Georgia, serif;
+  --font-sans: var(--font-nunito), system-ui, sans-serif;
+
+  --shadow-soft: 0 16px 36px -20px rgb(38 53 44 / 0.28);
+  --shadow-lift: 0 24px 44px -22px rgb(38 53 44 / 0.36);
+  --shadow-gold: 0 12px 24px -12px rgb(190 140 30 / 0.7);
+}
+
+html {
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+
+html.is-locked,
+html.is-locked body {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  overflow-x: clip;
+  background: var(--color-milk);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Сохранённый русский язык применяется до первого показа страницы. */
+html.locale-pending body {
+  visibility: hidden;
+}
+
+/* Пока не определена нужная версия, неподходящая к ширине экрана не показывается. */
+@media (max-width: 1023.98px) {
+  html.js [data-variant="desktop"] {
+    visibility: hidden;
+  }
+}
+@media (min-width: 1024px) {
+  html.js [data-variant="mobile"] {
+    visibility: hidden;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Фиксированная шапка не должна перекрывать раздел при переходе из меню. */
+.section-anchor {
+  scroll-margin-top: 74px;
+}
+[data-variant="mobile"] .section-anchor {
+  scroll-margin-top: 60px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1128px;
+  margin-inline: auto;
+  padding-inline: 32px;
+}
+
+.btn {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease;
+}
+.btn svg {
+  flex-shrink: 0;
+}
+.btn-gold {
+  background: var(--color-gold);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-gold);
+}
+.btn-white {
+  background: #fff;
+  color: var(--color-ink);
+  box-shadow: var(--shadow-soft);
+}
+.btn-ink {
+  background: var(--color-ink);
+  color: var(--color-milk);
+  box-shadow: var(--shadow-soft);
+}
+@media (hover: hover) {
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lift);
+  }
+  .btn-gold:hover {
+    background: #f0c459;
+  }
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Появление при прокрутке; без JavaScript всё видно сразу. */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.22, 0.8, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.float-a {
+  animation: float-a 7s ease-in-out infinite;
+}
+.float-b {
+  animation: float-b 9s ease-in-out infinite;
+}
+.twinkle {
+  animation: twinkle 3.4s ease-in-out infinite;
+}
+.spin-slow {
+  animation: spin-slow 40s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes float-a {
+  50% {
+    transform: translateY(-9px);
+  }
+}
+@keyframes float-b {
+  50% {
+    transform: translate(10px, 5px);
+  }
+}
+@keyframes twinkle {
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Лёгкое покачивание иллюстрации в карточках при наведении. */
+@media (hover: hover) {
+  .wiggle-parent:hover .wiggle {
+    animation: wiggle 0.7s ease-in-out;
+  }
+}
+@keyframes wiggle {
+  30% {
+    transform: rotate(-6deg) scale(1.05);
+  }
+  65% {
+    transform: rotate(5deg) scale(1.05);
+  }
+}
+
+.menu-sheet {
+  transition:
+    opacity 0.26s ease,
+    transform 0.32s cubic-bezier(0.22, 0.8, 0.3, 1),
+    visibility 0.32s;
+}
+
+dialog.lightbox {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  border: 0;
+  background: rgb(22 31 26 / 0.94);
+  color: #fff;
+}
+dialog.lightbox::backdrop {
+  background: rgb(22 31 26 / 0.94);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  html.js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
