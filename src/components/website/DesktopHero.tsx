@@ -2,14 +2,14 @@
 
 import { ArrowDown, ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { Cloud, Sparkle, Squiggle, Star, Sun, Wave } from "@/components/shared/Decorations";
-import { HeroScene } from "@/components/shared/Illustrations";
+import { Cloud, Sparkle, Squiggle, Star, Wave } from "@/components/shared/Decorations";
+import { LOGO_SRC } from "@/components/shared/Logo";
 import { useLocale } from "@/components/shared/LocaleProvider";
 import { site } from "@/data/site";
 
 const benefitColors = ["bg-gold", "bg-sage", "bg-butter"];
 
-export function DesktopHero({ photo }: { photo: string | null }) {
+export function DesktopHero() {
   const { t } = useLocale();
 
   return (
@@ -45,23 +45,22 @@ export function DesktopHero({ photo }: { photo: string | null }) {
             aria-hidden="true"
             className="absolute -inset-3 rotate-6 rounded-[47%_53%_44%_56%/54%_44%_56%_46%] bg-sage/35"
           />
-          <div className="absolute inset-0 overflow-hidden rounded-[47%_53%_44%_56%/54%_44%_56%_46%] bg-butter shadow-lift">
-            {photo ? (
-              <Image
-                src={photo}
-                alt={t.fullName}
-                fill
-                preload
-                sizes="(min-width: 1280px) 510px, 45vw"
-                className="object-cover"
-              />
-            ) : (
-              <HeroScene className="absolute inset-0 size-full" />
-            )}
-          </div>
-          {photo && <Sun className="float-a absolute -top-5 -right-3 size-20" />}
+          <div className="absolute inset-0 overflow-hidden rounded-[47%_53%_44%_56%/54%_44%_56%_46%] bg-[radial-gradient(circle_at_50%_45%,#FFFDF6_0,#FFF0BD_62%,#F9E2A0_100%)] shadow-lift" />
+          {/* Декор лежит под логотипом, чтобы не перекрывать надпись. */}
           <Cloud className="float-b absolute bottom-10 -left-8 w-24 drop-shadow-sm" />
           <Star className="twinkle absolute -bottom-1 right-14 size-8" color="#86A77B" />
+          {/* Логотип целиком, без обрезки: ~360–450 px в зависимости от ширины. */}
+          <div className="absolute inset-[6%] flex items-center justify-center">
+            <Image
+              src={LOGO_SRC}
+              alt={t.fullName}
+              width={1024}
+              height={1024}
+              preload
+              sizes="(min-width: 1280px) 450px, 40vw"
+              className="h-full max-h-[450px] w-auto max-w-full object-contain drop-shadow-[0_10px_18px_rgb(190_140_30/0.25)]"
+            />
+          </div>
         </div>
       </div>
 

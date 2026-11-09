@@ -20,7 +20,7 @@ export function MobileLayout({ media }: { media: SiteMedia }) {
       <SkipLink />
       <MobileHeader />
       <main id="main" tabIndex={-1}>
-        <MobileHero photo={media.hero} />
+        <MobileHero />
         <MobileAbout media={media.about} />
         <MobileGroups />
         <MobileClubs />

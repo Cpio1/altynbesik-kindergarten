@@ -1,29 +1,33 @@
 "use client";
 
 import Image from "next/image";
-import { Cloud, Sparkle, Star, Sun } from "@/components/shared/Decorations";
-import { HeroScene } from "@/components/shared/Illustrations";
+import { Cloud, Sparkle, Star } from "@/components/shared/Decorations";
+import { LOGO_SRC } from "@/components/shared/Logo";
 import { useLocale } from "@/components/shared/LocaleProvider";
 import { site } from "@/data/site";
 
 const benefitColors = ["bg-gold", "bg-sage", "bg-butter"];
 
-export function MobileHero({ photo }: { photo: string | null }) {
+export function MobileHero() {
   const { t } = useLocale();
 
   return (
     <section id="hero" className="relative overflow-clip pt-[54px]">
-      {/* Купол с фото занимает всю ширину экрана. */}
+      {/* Купол с логотипом занимает всю ширину экрана. */}
       <div className="relative mx-auto max-w-[640px] px-3.5 pt-3">
-        <div className="relative aspect-[5/4] overflow-hidden rounded-t-[140px] rounded-b-[28px] bg-butter shadow-soft min-[400px]:rounded-t-[170px] sm:rounded-t-[240px]">
-          {photo ? (
-            <Image src={photo} alt={t.fullName} fill preload sizes="(min-width: 640px) 640px, 100vw" className="object-cover" />
-          ) : (
-            <HeroScene viewBox="0 50 640 512" className="absolute inset-0 size-full" />
-          )}
-        </div>
-        {photo && <Sun className="float-a absolute top-1 right-2 size-12" />}
         <Cloud className="float-b absolute top-[38%] -left-3 w-14 drop-shadow-sm" />
+        <div className="relative flex aspect-[5/4] items-center justify-center overflow-hidden rounded-t-[140px] rounded-b-[28px] bg-[radial-gradient(circle_at_50%_48%,#FFFDF6_0,#FFF0BD_60%,#F9E2A0_100%)] shadow-soft min-[400px]:rounded-t-[170px] sm:rounded-t-[240px]">
+          {/* Логотип целиком, без обрезки: до 300 px. */}
+          <Image
+            src={LOGO_SRC}
+            alt={t.fullName}
+            width={1024}
+            height={1024}
+            preload
+            sizes="300px"
+            className="h-[90%] max-h-[300px] w-auto max-w-[90%] object-contain drop-shadow-[0_8px_14px_rgb(190_140_30/0.25)]"
+          />
+        </div>
       </div>
 
       <div className="relative mx-auto max-w-[640px] px-5 pt-5 pb-8 text-center">

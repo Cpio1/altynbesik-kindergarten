@@ -19,7 +19,7 @@ export function DesktopLayout({ media }: { media: SiteMedia }) {
       <SkipLink />
       <DesktopHeader />
       <main id="main" tabIndex={-1}>
-        <DesktopHero photo={media.hero} />
+        <DesktopHero />
         <DesktopAbout media={media.about} />
         <DesktopGroups />
         <DesktopClubs />

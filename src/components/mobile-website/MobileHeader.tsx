@@ -70,7 +70,7 @@ export function MobileHeader() {
     <div onKeyDown={open ? onSheetKeyDown : undefined}>
       <header className="fixed inset-x-0 top-0 z-50 bg-milk/95 shadow-[0_6px_18px_-14px_rgb(38_53_44/0.5)] backdrop-blur-md">
         <div className="flex h-[54px] items-center justify-between gap-2 px-3.5 sm:px-6">
-          <Logo markClass="size-8" textClass="text-[17px]" onClick={() => setOpen(false)} />
+          <Logo markClass="size-10" textClass="text-[17px]" onClick={() => setOpen(false)} />
           <div className="flex items-center gap-1.5">
             <LanguageSwitcher />
             <button

@@ -26,7 +26,7 @@ export function DesktopHeader() {
       }`}
     >
       <div className="wrap flex h-[66px] items-center justify-between gap-2 max-xl:px-5! xl:gap-4">
-        <Logo markClass="size-9" textClass="text-[18px] xl:text-[20px]" />
+        <Logo markClass="size-11" textClass="text-[18px] xl:text-[20px]" />
         <nav aria-label={t.a11y.menu}>
           <ul className="flex items-center gap-0.5">
             {sectionIds.map((id) => (
