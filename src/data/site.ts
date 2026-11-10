@@ -38,6 +38,18 @@ export const site = {
   },
 };
 
+/** Названия групп в порядке отображения на сайте. */
+export const groupNames = [
+  "АлтынҮміт",
+  "АлтынБала",
+  "АлтынҰя",
+  "АлтынҰрпақ",
+  "АлтынПерзент",
+  "АлтынБөбек",
+  "АлтынМұра",
+  "АлтынАрай",
+] as const;
+
 export const phoneHref = `tel:${site.phone.e164}`;
 
 export const twoGisFirmUrl = `https://2gis.kz/${site.twoGis.city}/firm/${site.twoGis.firmId}`;
